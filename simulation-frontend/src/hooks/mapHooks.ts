@@ -13,7 +13,6 @@ export function useCars() {
         .get(`${BASE_URL}/api/car`)
         .then((res) => {
           setCars(res.data.allCars.data);
-          console.log(res.data.allCars.data);
         })
         .catch((error) => console.log(error));
     }

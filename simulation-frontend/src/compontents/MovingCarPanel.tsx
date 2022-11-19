@@ -1,12 +1,9 @@
 import { useCars } from '../hooks/mapHooks';
 
-const CarItem = ({ car, index }: any) => {
+const CarItem = ({ car }: any) => {
   const batteryLevel = (car.currentRange / car.maximumRange) * 100;
   return (
-    <div
-      key={index}
-      className="w-4/5 rounded-md shadow-md flex flex-col h-16 p-2"
-    >
+    <div className="w-4/5 rounded-md shadow-md flex flex-col h-16 p-2">
       <span>{car.name}</span>
       <div className="flex flex-row justify-between">
         <span className="text-sm text-gray-500">{car.carType}</span>
@@ -34,7 +31,7 @@ const MovingCarPanel = () => {
       {cars
         .filter((car) => car.carMode === 'Moving')
         .map((car, index) => (
-          <CarItem car={car} index={index} />
+          <CarItem key={index} car={car} />
         ))}
     </>
   );
