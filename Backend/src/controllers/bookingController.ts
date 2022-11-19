@@ -21,12 +21,12 @@ export async function createBookingRequest(req: Request, res: Response) {
 				car: {
 					connect: body.car
 				},
-                startStation: {
-                    connect: body.startStation
-                },
-                endStation: {
-                    connect: body.endStation
-                }
+				startStation: {
+					connect: body.startStation
+				},
+				endStation: {
+					connect: body.endStation
+				}
 			}
 		})
 
@@ -60,12 +60,12 @@ export async function updateBookingRequest(req: Request, res: Response) {
 				car: {
 					connect: body.car
 				},
-                startStation: {
-                    connect: body.startStation
-                },
-                endStation: {
-                    connect: body.endStation
-                }
+				startStation: {
+					connect: body.startStation
+				},
+				endStation: {
+					connect: body.endStation
+				}
 			}
 		})
 
