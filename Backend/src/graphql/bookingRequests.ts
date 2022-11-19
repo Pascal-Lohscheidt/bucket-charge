@@ -33,7 +33,6 @@ export const createBooking = gql`
 
 export const updateBooking = gql`
   mutation ($id: ID!, $data: BookingInput!) {
-    mutation($id: ID!, $data: BookingInput!) {
     updateBooking(id: $id, data: $data) {
         _id,
         startDate,
@@ -68,7 +67,7 @@ export const updateBooking = gql`
             after,
         }
     }
-}}
+}
 `;
 
 export const deleteBooking = gql`
@@ -153,7 +152,6 @@ export const findBookings = gql`
 
 export const findBookingById = gql`
   query ($id: ID!) {
-    query($id: ID!) {
     findBookingByID(id: $id) {
         _id,
         startDate,
@@ -185,7 +183,6 @@ export const findBookingById = gql`
                 positionLong
             }
         }
-    }
     }
   }
 `;

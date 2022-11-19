@@ -65,12 +65,11 @@ export async function updateBookingRequest(req: Request, res: Response) {
         car: {
           connect: body.car,
         },
-        startStation: {
-          connect: body.startStation,
+        startPosition: {
+          lat: body.startPosition.lat,
+          long: body.startPosition.long,
         },
-        endStation: {
-          connect: body.endStation,
-        },
+        incentiveUsed: body.incentiveUsed,
       },
     });
 
@@ -87,7 +86,7 @@ export async function deleteBookingRequest(req: Request, res: Response) {
   try {
     const bookingId = req.params.id;
     const client = createFaunaClient('eu');
-    const booking = await client.request(deleteBooking, {
+    await client.request(deleteBooking, {
       id: bookingId,
     });
 

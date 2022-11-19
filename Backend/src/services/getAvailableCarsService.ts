@@ -19,13 +19,13 @@ export async function getAvailableCars(carType: string, startDate: number, endDa
 
 	// Check if the cars are available in the desired startStation
 	const locatedCars = availableCars.filter(c => {
-		const carBookings = allBookings.filter(b => b.car._id === c._id && b.endDate < startDate).sort((b1, b2) => b1.endDate > b2.endDate)
+		const previousCarBookings = allBookings.filter(b => b.car._id === c._id && b.endDate < startDate).sort((b1, b2) => b1.endDate > b2.endDate)
 
-		if (carBookings.lenght === 0) {
+		if (previousCarBookings.lenght === 0) {
 			return false
 		}
 
-		const lastPosition = carBookings[0].endStation
+		const lastPosition = previousCarBookings[0].endStation
 		return lastPosition._id === startStation
 	})
 
