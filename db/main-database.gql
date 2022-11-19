@@ -50,7 +50,7 @@ type Booking {
   endDate: Int!
   distance: Float!
   incentiveUsed: Boolean!
-  startPosition: Position!
+  startPosition: Position! @embedded
   waypoints: [Station!]! @relation
 }
 
