@@ -36,6 +36,12 @@ type Station {
   chargingSlots: Int!
   cars: [Car!]! @relation
   stationType: StationType!
+  bookings: [Booking!]! @relation
+}
+
+type Position {
+  lat: Float!
+  long: Float!
 }
 
 type Booking {
@@ -43,8 +49,9 @@ type Booking {
   startDate: Int!
   endDate: Int!
   distance: Float!
-  startStation: Station! @relation
-  endStation: Station! @relation
+  incentiveUsed: Boolean!
+  startPosition: Position
+  waypoints: [Station!]! @relation
 }
 
 type Query {
