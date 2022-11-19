@@ -7,7 +7,7 @@ module.exports = {
         app: '1fr 350px',
       },
       gridTemplateRows: {
-        app: '1fr 350px',
+        app: '100px 1fr',
       },
       colors: {
         sixt: {

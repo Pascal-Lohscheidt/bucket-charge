@@ -53,6 +53,9 @@ const Map = ({
             icon: chargingStationIcon(new google.maps.Point(15, 30)),
             map: window.map,
           });
+          google.maps.event.addListener(marker, 'click', () =>
+            selectStation(station)
+          );
 
           return marker;
         })
