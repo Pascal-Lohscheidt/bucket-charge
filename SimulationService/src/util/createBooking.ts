@@ -1,95 +1,113 @@
 import axios from 'axios';
 
-export const createBookingForRoute = (startLong: number, startLat: number, endLong: number, endLat: number,
-    startDate: number, endDate: number, carType: string, hotSwap: boolean) => {
-    // connect with server get offers bla lba
-    // console.log(`create booking for ${name} on ${lat}, ${long} with ${carType}`);
+export const createBookingForRoute = (startStation: string, endStation: string, startDate: number, endDate: number, carType: string) => {
     var data = {
-    "startLong": startLong,
-    "startLat": startLat,
-    "endLong": endLong,
-    "endLat": endLat,
-    "startDate": startDate,
-    "endDate": endDate,
-    "carType": carType,
-    "hotSwap": hotSwap
+        "startStation": startStation,
+        "endStation": endStation,
+        "startDate": startDate,
+        "endDate": endDate,
+        "carType": carType
     };
 
     const config: any = {
-    method: 'get',
-    headers: { 
-        'Content-Type': 'application/json'
-    },
-    url: 'http://localhost:8080/ListOffersForRoute',
-    data
+        method: 'get',
+        url: 'http://localhost:8080/api/Offers/ListOffersForRoute',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: data
     };
 
     axios(config)
-    .then(function (response) {
-    console.log(JSON.stringify(response.data));
-    
-    submitBooking();
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
-    
+        .then(function (response) {
+            console.log(response.data);
+            const { _id } = response.data;
+            submitBooking( _id, startStation, endStation)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
 
-const submitBooking = () => {
-   var data = {
-    "startDate": 1668732207,
-    "endDate": 1668818607,
-    "distance": 50.5,
-    "car": {
-        "connect": "348716537770672333"
-    }
-    };
-
-    var config: any = {
-    method: 'post',
-    url: 'http://localhost:8080/api/booking',
-    headers: { 
-        'Content-Type': 'application/json'
-    },
-    data: data
-};
-
-    axios(config)
-    .then(function (response) {
-    console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
-}
-
-export const createBookingForDuration = (startLong: number, startLat: number, startDate: number, endDate: number,
-    carType: string) => {
+export const createBookingForDuration = (startStation: string, distance: number, startDate: number, endDate: number, carType: string) => {
     var data = {
-    "startLong": 75,
-    "startLat": 30,
-    "startDate": 1668818607,
-    "endDate": 1668828607,
-    "carType": "Truck"
+        "startStation": startStation,
+        "distance": distance,
+        "startDate": startDate,
+        "endDate": endDate,
+        "carType": carType
     };
 
     var config: any = {
-    method: 'get',
-    url: 'http://localhost:8080/ListOffersForDuration',
-    headers: { 
-        'Content-Type': 'application/json'
-    },
-    data: data
+        method: 'get',
+        url: 'http://localhost:8080/api/Offers/ListOffersForDuration',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: data
     };
 
-    
     axios(config)
-    .then(function (response) {
-    console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
-    
+        .then(function (response) {
+            console.log(response.data);
+            const { _id } = response.data;
+            submitBooking(_id, startStation, null)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+export const createBookingWithHotSwap = (startStation: string, endStation: string, startDate: number, endDate: number, carType: string) => {
+    var data = {
+        "startStation": startStation,
+        "endStation": endStation,
+        "startDate": startDate,
+        "endDate": endDate,
+        "carType": carType
+      };
+      
+      var config: any = {
+        method: 'get',
+        url: 'http://localhost:8080/api/offer/hotswap',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(response.data);
+        const { _id } = response.data
+        submitBooking(_id, startStation, endStation)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+}
+
+const submitBooking = (carId: string, startStationId: string, endStationId: string) => {
+    var data = {
+        car: carId, 
+        startStation: startStationId,
+        endStation: endStationId
+    };
+
+    var config: any = {
+        method: 'post',
+        url: 'http://localhost:8080/api/Bookings/CreateBooking',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: data
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
