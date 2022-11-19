@@ -34,7 +34,7 @@ type Station {
   positionLat: Float!
   positionLong: Float!
   chargingSlots: Int!
-  cars: [Car!] @relation
+  cars: [Car!]! @relation
   stationType: StationType!
 }
 
