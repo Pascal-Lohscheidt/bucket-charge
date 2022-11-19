@@ -1,0 +1,46 @@
+enum CarType {
+  Sedan
+  Transporter
+  Truck
+}
+
+enum CarMode {
+  Moving
+  Charging
+  Parked
+}
+
+enum StationType {
+  SixtStation
+  ChargingStation
+}
+
+type User {
+  name: String!
+}
+
+type Car {
+  name: String!
+  carType: CarType!
+  maximumRange: Float!
+  currentRange: Float!
+  carMode: CarMode!
+  lastTimeParked: String!
+  parkedAt: Station! @relation
+}
+
+type Station {
+  positionLat: Float!
+  positionLong: Float!
+  chargingSlots: Int!
+  cars: [Car!]! @relation
+  stationType: StationType!
+}
+
+type Booking {
+  car: Car!
+  startDate: String!
+  endDate: String!
+  distance: Float!
+  approxBatteryConsumption: Float!
+}
