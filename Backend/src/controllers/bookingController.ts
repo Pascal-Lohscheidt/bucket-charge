@@ -19,8 +19,14 @@ export async function createBookingRequest(req: Request, res: Response) {
 				endDate: body.endDate,
 				distance: body.distance,
 				car: {
-					connect: body.car.connect
-				}
+					connect: body.car
+				},
+                startStation: {
+                    connect: body.startStation
+                },
+                endStation: {
+                    connect: body.endStation
+                }
 			}
 		})
 
@@ -52,8 +58,14 @@ export async function updateBookingRequest(req: Request, res: Response) {
 				endDate: body.endDate,
 				distance: body.distance,
 				car: {
-					connect: body.car.connect
-				}
+					connect: body.car
+				},
+                startStation: {
+                    connect: body.startStation
+                },
+                endStation: {
+                    connect: body.endStation
+                }
 			}
 		})
 

@@ -20,8 +20,22 @@ export const createBooking = gql`
                 positionLat
             }
             currentRange,
-            maximumRange
-        }
+            maximumRange,
+        },
+        startStation {
+                _id,
+                stationType,
+                positionLat,
+                positionLong,
+                chargingSlots
+            },
+        endStation {
+            _id,
+            stationType,
+            positionLat,
+            positionLong,
+            chargingSlots
+        },
     }
 }
 `
@@ -47,7 +61,21 @@ export const updateBooking = gql`
             }
             currentRange,
             maximumRange
-        }
+        },
+        startStation {
+                _id,
+                stationType,
+                positionLat,
+                positionLong,
+                chargingSlots
+            },
+        endStation {
+            _id,
+            stationType,
+            positionLat,
+            positionLong,
+            chargingSlots
+        },
     }
 }
 `
@@ -73,7 +101,21 @@ export const deleteBooking = gql`
             }
             currentRange,
             maximumRange
-        }
+        },
+        startStation {
+                _id,
+                stationType,
+                positionLat,
+                positionLong,
+                chargingSlots
+            },
+        endStation {
+            _id,
+            stationType,
+            positionLat,
+            positionLong,
+            chargingSlots
+        },
     }
 }
 `
@@ -100,7 +142,21 @@ export const findBookings = gql`
                 }
                 currentRange,
                 maximumRange
-            }
+            },
+            startStation {
+                _id,
+                stationType,
+                positionLat,
+                positionLong,
+                chargingSlots
+            },
+        endStation {
+            _id,
+            stationType,
+            positionLat,
+            positionLong,
+            chargingSlots
+        },
         }
     }
 }
@@ -127,7 +183,21 @@ export const findBookingById = gql`
             }
             currentRange,
             maximumRange
-        }
+        },
+        startStation {
+                _id,
+                stationType,
+                positionLat,
+                positionLong,
+                chargingSlots
+            },
+        endStation {
+            _id,
+            stationType,
+            positionLat,
+            positionLong,
+            chargingSlots
+        },
     }
 }
 `
