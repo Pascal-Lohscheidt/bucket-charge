@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from 'graphql-request'
 
 export const createCar = gql`
   mutation($data: CarInput!) {
@@ -18,7 +18,7 @@ export const createCar = gql`
         maximumRange
     }
 }
-`;
+`
 
 export const updateCar = gql`
   mutation($id: ID!, $data: CarInput!) {
@@ -38,7 +38,7 @@ export const updateCar = gql`
         maximumRange
     }
 }
-`;
+`
 
 export const deleteCar = gql`
   mutation($id: ID!) {
@@ -58,7 +58,7 @@ export const deleteCar = gql`
         maximumRange
     }
 }
-`;
+`
 
 export const findCars = gql`
   query {
@@ -80,7 +80,7 @@ export const findCars = gql`
         }
     }
 }
-`;
+`
 
 export const findCarsById = gql`
   query($id: ID!) {
@@ -100,4 +100,4 @@ export const findCarsById = gql`
         maximumRange
     }
 }
-`;
+`

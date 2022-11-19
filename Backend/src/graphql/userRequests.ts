@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from 'graphql-request'
 
 export const createUser = gql`
   mutation($data: UserInput!) {
@@ -7,7 +7,7 @@ export const createUser = gql`
         name
     }
 }
-`;
+`
 
 export const updateUser = gql`
   mutation($id: ID!, $data: UserInput!) {
@@ -16,7 +16,7 @@ export const updateUser = gql`
         name
     }
 }
-`;
+`
 
 export const deleteUser = gql`
   mutation($id: ID!) {
@@ -25,18 +25,18 @@ export const deleteUser = gql`
         name
     }
 }
-`;
+`
 
 export const findUsers = gql`
   query {
     allUsers {
         data {
             _id,
-            name   
+            name
         }
     }
 }
-`;
+`
 
 export const findUserById = gql`
   query($id: ID!) {
@@ -45,4 +45,4 @@ export const findUserById = gql`
         name
     }
 }
-`;
+`

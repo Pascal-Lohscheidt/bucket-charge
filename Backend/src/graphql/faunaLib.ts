@@ -1,8 +1,8 @@
-import { GraphQLClient } from 'graphql-request';
+import { GraphQLClient } from 'graphql-request'
 
 export const createFaunaClient = (region: 'eu' | 'us') =>
-  new GraphQLClient(`https://graphql.${region}.fauna.com/graphql`, {
-    headers: {
-      Authorization: `Bearer ${process.env.FAUNA_KEY}`,
-    },
-  });
+	new GraphQLClient(`https://graphql.${region}.fauna.com/graphql`, {
+		headers: {
+			Authorization: `Bearer ${process.env.FAUNA_KEY}`,
+		},
+	})

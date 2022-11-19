@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from 'graphql-request'
 
 export const createStation = gql`
   mutation($data: StationInput!) {
@@ -23,7 +23,7 @@ export const createStation = gql`
         }
     }
 }
-`;
+`
 
 export const updateStation = gql`
   mutation($id: ID!, $data: StationInput!) {
@@ -48,7 +48,7 @@ export const updateStation = gql`
         }
     }
 }
-`;
+`
 
 export const deleteStation = gql`
   mutation($id: ID!) {
@@ -73,7 +73,7 @@ export const deleteStation = gql`
         }
     }
 }
-`;
+`
 
 export const findStations = gql`
   query {
@@ -100,7 +100,7 @@ export const findStations = gql`
         }
     }
 }
-`;
+`
 
 export const findStationById = gql`
   query($id: ID!) {
@@ -125,4 +125,4 @@ export const findStationById = gql`
             }
     }
 }
-`;
+`
