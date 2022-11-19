@@ -43,5 +43,11 @@ type Booking {
   startDate: Int!
   endDate: Int!
   distance: Float!
-  approxBatteryConsumption: Float!
+}
+
+type Query {
+  allCars: [Car!]!
+  allUsers: [User!]!
+  allBookings: [Booking!]!
+  allStations: [Station!]!
 }
