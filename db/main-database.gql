@@ -13,7 +13,7 @@ enum CarMode {
 enum StationType {
   SixtStation
   ChargingStation
-  None
+  Other
 }
 
 type User {
