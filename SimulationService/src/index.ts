@@ -30,90 +30,100 @@ httpServer.listen({ port }, (): void => {
   generateUserBehaviour();
 });
 
+var firstStation;
+var airportStation;
+var secondStation;
+var firstChargeStation;
+var secondChargeStation;
+var thirdStation
+var thirdChargeStation
+var fourthChargeStation
+var fourthStation
+var fithStation
+
 const generateUserBehaviour = async () => {
-  // await initializeStations();
+  await initializeStations();
 
-  var data = '';
-  /*
+  
   setTimeout(() => {
-    firstScenario();
+    firstScenario(firstStation, airportStation, 1768742103, 176874304, "Sedan");
   }, 4000);
 
   setTimeout(() => {
-    secondScenario();
+    secondScenario(fithStation, firstChargeStation, 1768741103, 176874303, "Truck");
   }, 4000);
 
   setTimeout(() => {
-    thirdScenario();
-  }, 4000);*/
+    thirdScenario(thirdStation, fourthStation, 1768742203, 1768744403, "Transporter");
+	}, 4000);
 };
 
 const initializeStations = async () => {
-  const firstStation = await createNewStation(
+  firstStation = await createNewStation(
     'SixtStation',
     1,
     33.807127,
     -118.145908
   );
-  const airportStation = await createNewStation(
+  airportStation = await createNewStation(
     'Other',
     3,
     33.943021,
     -118.401891
   ); // Airport
 
-  const secondStation = await createNewStation(
+  secondStation = await createNewStation(
     'SixtStation',
     6,
     33.772813,
     -118.19318
   );
-  const firstChargeStation = await createNewStation(
+  firstChargeStation = await createNewStation(
     'ChargingStation',
-    getRanddomInteger(1, 10),
+    11,
     33.649303,
     -117.972085
   );
 
-  const secondChargeStation = await createNewStation(
+  secondChargeStation = await createNewStation(
     'ChargingStation',
     8,
     33.993788,
     -117.524108
   );
 
-  const thirdStation = await createNewStation(
+  thirdStation = await createNewStation(
     'SixtStation',
     7,
     33.978546,
     -117.461845
   );
 
-  const thirdChargeStation = await createNewStation(
+  thirdChargeStation = await createNewStation(
     'ChargingStation',
     2,
     33.789405,
     -118.194677
   );
 
-  const fourthChargeStation = await createNewStation(
+  fourthChargeStation = await createNewStation(
     'ChargingStation',
     5,
     33.930427,
     -118.402315
   );
 
-  const fourthStation = await createNewStation(
+  fourthStation = await createNewStation(
     'SixtStation',
     9,
     33.993808,
     -117.524047
   );
 
-  const fithStation = await createNewStation(
+  fithStation = await createNewStation(
     'SixtStation',
     4,
-    33.93001,
+    33.930010,
     -118.394665
   );
 
@@ -236,9 +246,3 @@ const getNewStationById = (stationId: string) => {
       console.log(error);
     });
 };
-
-function getRanddomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-const getCar = () => {};
