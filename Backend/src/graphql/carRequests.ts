@@ -82,7 +82,7 @@ export const findCars = gql`
 }
 `
 
-export const findCarsById = gql`
+export const findCarById = gql`
   query($id: ID!) {
     findCarByID(id: $id) {
         carMode,
