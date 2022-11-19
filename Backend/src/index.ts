@@ -8,6 +8,7 @@ import { userRoute } from "./routes/userRoute"
 import { allowCrossDomain } from "./middleware/crossDomainMiddleware"
 import { bookingRoute } from "./routes/bookingRoute"
 import { carRoute } from "./routes/carRoute"
+import { stationRoute } from "./routes/stationRoute"
 
 // initialize configuration
 dotenv.config()
@@ -29,6 +30,7 @@ app.use('/', indexRoute)
 app.use('/api/user', userRoute)
 app.use('/api/booking', bookingRoute)
 app.use('/api/car', carRoute)
+app.use('/api/station', stationRoute)
 
 const httpServer = createServer(app)
 
