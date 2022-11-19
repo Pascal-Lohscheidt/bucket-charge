@@ -13,6 +13,7 @@ enum CarMode {
 enum StationType {
   SixtStation
   ChargingStation
+  None
 }
 
 type User {
@@ -25,22 +26,22 @@ type Car {
   maximumRange: Float!
   currentRange: Float!
   carMode: CarMode!
-  lastTimeParked: String!
-  parkedAt: Station! @relation
+  lastTimeParked: Int!
+  parkedAt: Station @relation
 }
 
 type Station {
   positionLat: Float!
   positionLong: Float!
   chargingSlots: Int!
-  cars: [Car!]! @relation
+  cars: [Car!] @relation
   stationType: StationType!
 }
 
 type Booking {
   car: Car!
-  startDate: String!
-  endDate: String!
+  startDate: Int!
+  endDate: Int!
   distance: Float!
   approxBatteryConsumption: Float!
 }
