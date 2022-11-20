@@ -49,20 +49,41 @@ var fourthRndStation;
 var fifthRndStation;
 
 const generateUserBehaviour = async () => {
-  await initializeStations();
+  	await initializeStations();
 
-  
-  setTimeout(() => {
-    firstScenario(firstStation, airportStation, 1768742103, 176874304, "Sedan");
-  }, 4000);
-
-  setTimeout(() => {
-    secondScenario(fithStation, firstChargeStation, 1768741103, 176874303, "Truck");
-  }, 4000);
-
-  setTimeout(() => {
-    thirdScenario(thirdStation, fourthStation, 1768742203, 1768744403, "Transporter");
-	}, 4000);
+	for (let i = 0; i < 11; i++) {
+		setTimeout(() => {
+			firstScenario(firstStation, airportStation, 1768742103, 176874304, "Sedan");
+		  }, 4000);
+	
+		  setTimeout(() => {
+			secondScenario(fithStation, firstChargeStation, 1768741103, 176874303, "Truck");
+		  }, 4000);
+	
+		  setTimeout(() => {
+			thirdScenario(thirdStation, fourthStation, 1768742203, 1768744403, "Transporter");
+		}, 4000);
+	
+		setTimeout(() => {
+			fourthScenario(firstRndStation, fifthRndStation, 1668742203, 1668752203, "Sedan")
+		}, 4000);
+	
+		setTimeout(() => {
+			fifthScenario(secondRndStation, fourthRndStation, 1768742203, 1768742503, "Truck")
+		}, 4000);
+	
+		setTimeout(() => {
+			sixthScenario(thirdRndStation, 3000, 1868742203, 1868842203, "Transporter")
+		}, 4000);
+	
+		setTimeout(() => {
+			seventhScenario(fourthChargeStation, fourthRndStation, 1668742203, 1668742503, "Sedan")
+		}, 4000);
+	
+		setTimeout(() => {
+			eighthScenario(firstChargeStation, fifthRndStation, 1768742503, 1768742519, "Sedan")
+		}, 4000);
+	}
 };
 
 const initializeStations = async () => {
@@ -324,6 +345,86 @@ const thirdScenario = (
     endDate,
     carType
   );
+};
+
+const fourthScenario = (
+	startStation: string,
+  	endStation: string,
+  	startDate: number,
+  	endDate: number,
+  	carType: string
+) => {
+	createBookingWithHotSwap(
+		startStation,
+		endStation,
+		startDate,
+		endDate,
+		carType
+	)
+};
+
+const fifthScenario = (
+	startStation: string,
+  	endStation: string,
+  	startDate: number,
+  	endDate: number,
+  	carType: string
+) => {
+	createBookingWithHotSwap(
+		startStation,
+		endStation,
+		startDate,
+		endDate,
+		carType
+	)
+};
+
+const sixthScenario = (
+	startStation: string,
+  	distance: number,
+  	startDate: number,
+  	endDate: number,
+  	carType: string
+) => {
+	createBookingForDuration(
+		startStation,
+		distance,
+		startDate,
+		endDate,
+		carType
+	)
+};
+
+const seventhScenario = (
+	startStation: string,
+  	endStation: string,
+  	startDate: number,
+  	endDate: number,
+  	carType: string
+) => {
+	createBookingForRoute(
+		startStation,
+		endStation,
+		startDate,
+		endDate,
+		carType
+	)
+};
+
+const eighthScenario = (
+	startStation: string,
+  	endStation: string,
+  	startDate: number,
+  	endDate: number,
+  	carType: string
+) => {
+	createBookingForRoute(
+		startStation,
+		endStation,
+		startDate,
+		endDate,
+		carType
+	)
 };
 
 const getNewStationById = (stationId: string) => {
