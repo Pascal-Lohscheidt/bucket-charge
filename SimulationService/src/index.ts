@@ -239,12 +239,66 @@ const initializeStations = async () => {
     otherStation
   );
 
-  otherStation = await createNewStation('Other', 2, 34.015199, -118.275793);
+  otherStation = await createNewStation('Other', 2, 33.974592, -118.333467);
   await createNewCar(
-    'BMW 330i',
+    'Audi Q8',
     'Sedan',
-    400,
-    40,
+    1000,
+    170,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 34.032602, -118.323006);
+  await createNewCar(
+    'Audi Q5',
+    'Sedan',
+    700,
+    170,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.871660, -118.313460);
+  await createNewCar(
+    'Bmw X5',
+    'Sedan',
+    830,
+    180,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.850695, -118.260331);
+  await createNewCar(
+    'Bmw X5',
+    'Sedan',
+    830,
+    280,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 34.381107, -118.531688);
+  await createNewCar(
+    'Mercedes GLS',
+    'Sedan',
+    1500,
+    280,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  await createNewCar(
+    'Mercedes GLS',
+    'Sedan',
+    1500,
+    1500,
     'Charging',
     1768742203,
     otherStation
@@ -258,6 +312,70 @@ const initializeStations = async () => {
     'Charging',
     1768742203,
     firstChargeStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.956716, -118.264280);
+  await createNewCar(
+    'Mercedes GLE',
+    'Sedan',
+    1500,
+    280,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  await createNewCar(
+    'Audi a1',
+    'Sedan',
+    900,
+    900,
+    'Parked',
+    1768742109,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.947483, -118.297673);
+  await createNewCar(
+    'Mercedes GLC',
+    'Sedan',
+    980,
+    280,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  await createNewCar(
+    'Mercedes GLC',
+    'Sedan',
+    980,
+    730,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.692610, -117.959513);
+  await createNewCar(
+    'Mercedes GLC',
+    'Sedan',
+    980,
+    500,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 33.753015, -117.920410);
+  await createNewCar(
+    'Mercedes GLC',
+    'Sedan',
+    980,
+    500,
+    'Charging',
+    1768742203,
+    otherStation
   );
 
   await createNewCar(
