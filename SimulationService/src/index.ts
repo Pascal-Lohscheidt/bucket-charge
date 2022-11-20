@@ -35,11 +35,18 @@ var airportStation;
 var secondStation;
 var firstChargeStation;
 var secondChargeStation;
-var thirdStation
-var thirdChargeStation
-var fourthChargeStation
-var fourthStation
-var fithStation
+var thirdStation;
+var thirdChargeStation;
+var fourthChargeStation;
+var fourthStation;
+var fithStation;
+
+//random stations
+var firstRndStation;
+var secondRndStation;
+var thirdRndStation;
+var fourthRndStation;
+var fifthRndStation;
 
 const generateUserBehaviour = async () => {
   await initializeStations();
@@ -127,6 +134,41 @@ const initializeStations = async () => {
     -118.394665
   );
 
+  firstRndStation = await createNewStation(
+	'ChargingStation',
+	12,
+	33.903374,
+	-118.160242,
+  );
+
+  secondRndStation = await createNewStation(
+	'ChargingStation',
+	12,
+	33.824573,
+	-118.342704
+  );
+
+  thirdRndStation = await createNewStation(
+	'ChargingStation',
+	12,
+	33.837566, 
+	-118.382792
+  );
+
+  fourthRndStation = await createNewStation(
+	'ChargingStation',
+	12,
+	34.031610, 
+	-118.473518
+  );
+
+  fifthRndStation = await createNewStation(
+	'ChargingStation',
+	12,
+	34.064508, 
+	-118.394828
+  );
+
   await createNewCar(
     'BMW 330i',
     'Sedan',
@@ -185,6 +227,66 @@ const initializeStations = async () => {
     'Parked',
     1768742011,
     airportStation
+  );
+
+  await createNewCar(
+	'Tesla Model 3',
+	'Sedan',
+	 4000,
+	 2700,
+	 'Parked',
+	 1768742011,
+	 firstRndStation
+  );
+
+  await createNewCar(
+	'Cyber Truck',
+	'Truck',
+	 7000,
+	 2300,
+	 'Parked',
+	 1768742011,
+	 firstRndStation
+  );
+
+  await createNewCar(
+	'Bmw i8',
+	'Sedan',
+	 3500,
+	 2700,
+	 'Parked',
+	 1768742011,
+	 secondRndStation
+  );
+
+  await createNewCar(
+	'Mercedes c-class',
+	'Sedan',
+	 3500,
+	 1200,
+	 'Parked',
+	 1768742011,
+	 thirdRndStation
+  );
+
+  await createNewCar(
+	'Bmw m4',
+	'Sedan',
+	 2700,
+	 2700,
+	 'Parked',
+	 1768742011,
+	 fourthRndStation
+  );
+
+  await createNewCar(
+	'Bmw m5',
+	'Sedan',
+	 3100,
+	 2700,
+	 'Parked',
+	 1768742011,
+	 fifthRndStation
   );
 };
 
