@@ -49,7 +49,7 @@ var fourthRndStation;
 var fifthRndStation;
 
 const generateUserBehaviour = async () => {
-  await initializeStations();
+  //await initializeStations();
 
   for (let i = 0; i < 11; i++) {
     setTimeout(() => {
@@ -261,7 +261,7 @@ const initializeStations = async () => {
     otherStation
   );
 
-  otherStation = await createNewStation('Other', 2, 33.871660, -118.313460);
+  otherStation = await createNewStation('Other', 2, 33.87166, -118.31346);
   await createNewCar(
     'Bmw X5',
     'Sedan',
@@ -314,7 +314,7 @@ const initializeStations = async () => {
     firstChargeStation
   );
 
-  otherStation = await createNewStation('Other', 2, 33.956716, -118.264280);
+  otherStation = await createNewStation('Other', 2, 33.956716, -118.26428);
   await createNewCar(
     'Mercedes GLE',
     'Sedan',
@@ -356,7 +356,7 @@ const initializeStations = async () => {
     otherStation
   );
 
-  otherStation = await createNewStation('Other', 2, 33.692610, -117.959513);
+  otherStation = await createNewStation('Other', 2, 33.69261, -117.959513);
   await createNewCar(
     'Mercedes GLC',
     'Sedan',
@@ -367,7 +367,7 @@ const initializeStations = async () => {
     otherStation
   );
 
-  otherStation = await createNewStation('Other', 2, 33.753015, -117.920410);
+  otherStation = await createNewStation('Other', 2, 33.753015, -117.92041);
   await createNewCar(
     'Mercedes GLC',
     'Sedan',
@@ -506,7 +506,7 @@ const secondScenario = (
   endDate: number,
   carType: string
 ) => {
-  createBookingForDuration(startStation, distance, startDate, endDate, carType);
+  // createBookingForDuration(startStation, distance, startDate, endDate, carType);
 };
 
 const thirdScenario = (
@@ -574,7 +574,7 @@ const seventhScenario = (
   endDate: number,
   carType: string
 ) => {
-  createBookingForRoute(startStation, endStation, startDate, endDate, carType);
+  //createBookingForRoute(startStation, endStation, startDate, endDate, carType);
 };
 
 const eighthScenario = (
@@ -584,7 +584,7 @@ const eighthScenario = (
   endDate: number,
   carType: string
 ) => {
-  createBookingForRoute(startStation, endStation, startDate, endDate, carType);
+  // createBookingForRoute(startStation, endStation, startDate, endDate, carType);
 };
 
 const getNewStationById = (stationId: string) => {
