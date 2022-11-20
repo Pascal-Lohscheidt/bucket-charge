@@ -54,7 +54,8 @@ const generateUserBehaviour = async () => {
   for (let i = 0; i < 11; i++) {
     setTimeout(() => {
       firstScenario(
-        firstStation,
+        "33.807127",
+		"-118.145908",
         airportStation,
         1768742103,
         176874304,
@@ -114,7 +115,8 @@ const generateUserBehaviour = async () => {
 
     setTimeout(() => {
       seventhScenario(
-        fourthChargeStation,
+        "33.930427",
+    	"-118.402315",
         fourthRndStation,
         1668742203,
         1668742503,
@@ -124,7 +126,8 @@ const generateUserBehaviour = async () => {
 
     setTimeout(() => {
       eighthScenario(
-        firstChargeStation,
+        "33.993788",
+    	"-117.524108",
         fifthRndStation,
         1768742503,
         1768742519,
@@ -490,13 +493,14 @@ const initializeStations = async () => {
 };
 
 const firstScenario = async (
-  startStation: string,
-  endStation: string,
-  startDate: number,
-  endDate: number,
-  carType: string
+	startLat: string,
+	startLong: string,
+	endStation: string,
+	startDate: number,
+	endDate: number,
+	carType: string
 ) => {
-  createBookingForRoute(startStation, endStation, startDate, endDate, carType);
+  createBookingForRoute(startLat, startLong, endStation, startDate, endDate, carType);
 };
 
 const secondScenario = (
@@ -568,23 +572,25 @@ const sixthScenario = (
 };
 
 const seventhScenario = (
-  startStation: string,
-  endStation: string,
-  startDate: number,
-  endDate: number,
-  carType: string
+	startLat: string,
+	startLong: string,
+	endStation: string,
+	startDate: number,
+	endDate: number,
+	carType: string
 ) => {
-  //createBookingForRoute(startStation, endStation, startDate, endDate, carType);
+  createBookingForRoute(startLat, startLong, endStation, startDate, endDate, carType);
 };
 
 const eighthScenario = (
-  startStation: string,
-  endStation: string,
-  startDate: number,
-  endDate: number,
-  carType: string
+	startLat: string,
+	startLong: string,
+	endStation: string,
+	startDate: number,
+	endDate: number,
+	carType: string
 ) => {
-  // createBookingForRoute(startStation, endStation, startDate, endDate, carType);
+  createBookingForRoute(startLat, startLong, endStation, startDate, endDate, carType);
 };
 
 const getNewStationById = (stationId: string) => {
