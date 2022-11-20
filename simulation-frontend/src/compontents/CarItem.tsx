@@ -1,9 +1,7 @@
-const CarItem = ({ car, className }: any) => {
+const CarItem = ({ car }: any) => {
   const batteryLevel = (car.currentRange / car.maximumRange) * 100;
   return (
-    <div
-      className={`w-4/5 rounded-md shadow-md flex flex-col h-16 p-2 ${className}`}
-    >
+    <div className={`w-4/5 rounded-md bg-gray-100 flex flex-col h-16 p-2`}>
       <span>{car.name}</span>
       <div className="flex flex-row justify-between">
         <span className="text-sm text-gray-500">{car.carType}</span>

@@ -58,9 +58,8 @@ const Map = ({ selectStation, selectedBooking }: MapProps) => {
     }
 
     if (
-      cars
-        .filter((car: any) => !!car.parkedAt)
-        .filter((car: any) => car.parkedAt.stationType === 'Other').length > 0
+      cars.filter((car: any) => car.parkedAt?.stationType === 'Other').length >
+      0
     ) {
       setChargingMarkers(
         cars.map((station: any) => {
@@ -73,6 +72,9 @@ const Map = ({ selectStation, selectedBooking }: MapProps) => {
             icon: carIcon(new google.maps.Point(15, 30)),
             map: window.map,
           });
+          google.maps.event.addListener(marker, 'click', () =>
+            selectStation(station.parkedAt)
+          );
 
           return marker;
         })
