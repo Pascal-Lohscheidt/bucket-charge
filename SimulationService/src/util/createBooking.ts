@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const createBookingForRoute = (
-  startLat: string,
-  startLong: string,
+export const createBooking = async (
+  startLat: number,
+  startLong: number,
   endStation: string,
   startDate: number,
   endDate: number,
@@ -26,24 +26,23 @@ export const createBookingForRoute = (
     data: data,
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(response.data);
-      const { carId, lowBatCarId } = response.data;
-      submitBooking(
-        carId,
-        lowBatCarId,
-        startDate,
-        endDate,
-        { lat: startLat, long: startLong },
-        endStation
-      );
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
+  const response: any = await axios(config);
+  console.log(response.data);
 
+  if (response.data.offers.length > 0) {
+    const { carId, lowBatCarId } = response.data.offers[0];
+    await submitBooking(
+      carId,
+      lowBatCarId,
+      startDate,
+      endDate,
+      startLat,
+      startLong,
+      endStation
+    );
+  }
+};
+/*
 export const createBookingForDuration = (
   startStation: string,
   distance: number,
@@ -113,15 +112,27 @@ export const createBookingWithHotSwap = (
       console.log(error);
     });
 };
-
-const submitBooking = (
+*/
+const submitBooking = async (
   carId: string,
   lowBatCarId: string,
   startDate: number,
   endDate: number,
-  startPosition: any,
+  startLat: number,
+  startLong: number,
   endStationId: string
 ) => {
+  const car: any = (
+    (await axios.get(`http://localhost:8080/api/car/${carId}`)) as any
+  ).data.findCarByID;
+  let lowBatCar = undefined;
+
+  if (lowBatCarId !== '') {
+    lowBatCar = (
+      (await axios.get(`http://localhost:8080/api/car/${lowBatCarId}`)) as any
+    ).data.findCarByID;
+  }
+
   var data = {
     startDate,
     endDate,
@@ -129,26 +140,58 @@ const submitBooking = (
     car: carId,
     incentiveUsed: lowBatCarId !== '',
     startPosition: {
-      lat: startPosition.lat,
-      long: startPosition.long,
+      lat: startLat,
+      long: startLong,
     },
-    stationId: endStationId,
+    stationId: lowBatCar !== '' ? lowBatCar.parkedAt._id : car.parkedAt._id,
   };
 
   var config: any = {
     method: 'post',
-    url: 'http://localhost:8080/api/Bookings/CreateBooking',
+    url: 'http://localhost:8080/api/booking',
     headers: {
       'Content-Type': 'application/json',
     },
     data: data,
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const response: any = await axios(config);
+
+  if (lowBatCarId !== '') {
+    config = {
+      method: 'put',
+      url: `http://localhost:8080/api/booking/${response.data.createBooking._id}`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        startDate: 1668732207,
+        endDate: 1668818607,
+        distance: 50.5,
+        car: carId,
+        incentiveUsed: true,
+        stationId: car.parkedAt._id,
+        startPosition: { lat: startLat, long: startLong },
+      },
+    };
+    await axios(config);
+  }
+
+  config = {
+    method: 'put',
+    url: `http://localhost:8080/api/booking/${response.data.createBooking._id}`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      startDate: 1668732207,
+      endDate: 1668818607,
+      distance: 50.5,
+      car: carId,
+      incentiveUsed: true,
+      stationId: endStationId,
+      startPosition: { lat: startLat, long: startLong },
+    },
+  };
+  await axios(config);
 };
