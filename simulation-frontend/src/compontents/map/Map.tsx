@@ -4,18 +4,13 @@ import { useCars, useStation } from '../../hooks/mapHooks';
 import { carIcon, chargingStationIcon, warehouseIcon } from './icons';
 
 type MapProps = {
-  filterSixtStations: boolean;
-  filterChargingStations: boolean;
   selectStation: (station: any) => void;
+  selectedBooking: any;
 };
 
 const GOOGLE_KEY = 'AIzaSyCylOoTb8pEjHGRPhUK2BNIfyxAOzf2cK8';
 
-const Map = ({
-  filterChargingStations,
-  filterSixtStations,
-  selectStation,
-}: MapProps) => {
+const Map = ({ selectStation, selectedBooking }: MapProps) => {
   useScript(
     `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_KEY}&callback=initMap&v=weekly`
   );
@@ -85,6 +80,32 @@ const Map = ({
     }
   }, [sixtStations, chargingStations, cars]);
 
+  useEffect(() => {
+    if (!!selectedBooking) {
+      const routeService = window.directionsService;
+      const routeRenderer = window.directionsRenderer;
+      var start = `${selectedBooking.startPosition.lat},${selectedBooking.startPosition.long}`;
+      var waypoints = selectedBooking.waypoints.data.map((w: any) => ({
+        location: `${w.positionLat},${w.positionLong}`,
+      }));
+      var end = waypoints[waypoints.length - 1].location;
+      waypoints.splice(-1, 1);
+      var request: any = {
+        origin: start,
+        destination: end,
+        waypoints: waypoints,
+        travelMode: 'DRIVING',
+      };
+
+      console.log(request);
+      routeService.route(request, function (result, status) {
+        if (status === 'OK') {
+          routeRenderer.setDirections(result);
+        }
+      });
+    }
+  }, [selectedBooking]);
+
   return (
     <>
       <div className="h-full w-full rounded-md" id="map"></div>
@@ -96,6 +117,8 @@ export default Map;
 
 // Initialize and add the map
 function initMap(): void {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
   // The location of Munich
   //const munich = { lat: 48.164405, lng: 11.574318 };
   const LA = { lat: 33.94662, lng: -118.09963 };
@@ -108,6 +131,7 @@ function initMap(): void {
       disableDefaultUI: true,
     }
   );
+  directionsRenderer.setMap(map);
 
   // The marker, positioned at Uluru
   /*const marker = new google.maps.Marker({
@@ -115,12 +139,16 @@ function initMap(): void {
     map: map,
   });*/
   window.map = map;
+  window.directionsService = directionsService;
+  window.directionsRenderer = directionsRenderer;
 }
 
 declare global {
   interface Window {
     initMap: () => void;
     map: google.maps.Map;
+    directionsService: google.maps.DirectionsService;
+    directionsRenderer: google.maps.DirectionsRenderer;
   }
 }
 window.initMap = initMap;

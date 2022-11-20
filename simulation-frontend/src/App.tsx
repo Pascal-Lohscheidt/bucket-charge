@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BookingPanel from './compontents/BookingPanel';
 import Map from './compontents/map/Map';
 import MovingCarPanel from './compontents/MovingCarPanel';
 import StationInfoPanel from './compontents/StationInfoPanel';
@@ -19,6 +20,7 @@ const MENUS = ['Bookings', 'Active', 'Inactive'];
 function App() {
   const [currentStation, selectStation] = useState<any>();
   const [selectedMenu, selectMenu] = useState<string>('Active');
+  const [selectedBooking, selectBooking] = useState<any>();
 
   return (
     <div className="w-full h-screen bg-white p-1 relative">
@@ -27,13 +29,14 @@ function App() {
       </div>
       {/* Overlay Content */}
       <div
-        className="absolute top-0 left-0 w-full h-screen
+        className="absolute top-0 left-0 w-full h-screen max-h-screen box-border
                       grid grid-cols-app grid-rows-app"
       >
-        <div className="row-start-1 row-span-1 col-start-2 col-span-1 z-30 p-3 w-full h-full">
+        <div className="row-start-1 row-span-1 col-start-2 col-span-1 z-30 p-3 w-full h-full box-border">
           <div className="bg-white rounded-lg w-full h-full flex flex-row justify-around items-center shadow-md">
-            {MENUS.map((menu) => (
+            {MENUS.map((menu, index) => (
               <TabButton
+                key={index}
                 click={() => selectMenu(menu)}
                 active={selectedMenu === menu}
               >
@@ -42,20 +45,22 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="row-start-2 row-span-1 col-start-2 col-span-1 z-30 p-3">
-          <div className="rounded-lg bg-white shadow-md w-full h-full">
+        <div className="row-start-2 row-span-1 col-start-2 col-span-1 z-30 p-3 box-border overflow-hidden">
+          <div className="rounded-lg bg-white shadow-md w-full h-full box-border overflow-hidden">
             {selectedMenu === 'Inactive' && (
               <StationInfoPanel station={currentStation} />
             )}
             {selectedMenu === 'Active' && <MovingCarPanel />}
+            {selectedMenu === 'Bookings' && (
+              <BookingPanel
+                selectBooking={selectBooking}
+                selectedBooking={selectedBooking}
+              />
+            )}
           </div>
         </div>
       </div>
-      <Map
-        selectStation={selectStation}
-        filterChargingStations={false}
-        filterSixtStations={false}
-      />
+      <Map selectStation={selectStation} selectedBooking={selectedBooking} />
     </div>
   );
 }

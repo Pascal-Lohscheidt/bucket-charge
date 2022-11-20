@@ -6,7 +6,6 @@ const MovingCarPanel = () => {
 
   return (
     <>
-      <h1 className="text-xl">Moving Cars</h1>
       {cars
         .filter((car) => car.carMode === 'Moving')
         .map((car, index) => (
