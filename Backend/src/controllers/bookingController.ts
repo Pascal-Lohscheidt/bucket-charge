@@ -24,6 +24,7 @@ export async function createBookingRequest(req: Request, res: Response) {
         startDate: body.startDate,
         endDate: body.endDate,
         distance: body.distance,
+        lowBatCarId: body.lowBatCarId,
         car: {
           connect: body.car,
         },
@@ -65,6 +66,7 @@ export async function updateBookingRequest(req: Request, res: Response) {
         startDate: body.startDate,
         endDate: body.endDate,
         distance: body.distance,
+        lowBatCarId: body.lowBatCarId,
         car: {
           connect: body.car,
         },
