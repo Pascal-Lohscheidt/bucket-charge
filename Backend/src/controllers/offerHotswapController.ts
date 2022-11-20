@@ -38,7 +38,7 @@ export async function listOfferHotswapRequest(req: Request, res: Response) {
 			(c) => c.currentRange / c.maximumRange <= lowBattery
 		)
 
-		const deviation = 0.08 // around 2km
+		const deviation = 0.02 // around 2km
 		const carsLowBatteryInArea: any[] = carsLowBattery.filter(
 			(c) =>
 				Math.sqrt(
