@@ -38,7 +38,7 @@ export async function listOfferHotswapRequest(req: Request, res: Response) {
 			(c) => c.currentRange / c.maximumRange <= lowBattery
 		)
 
-		const deviation = 0.02 // around 2km
+		const deviation = 0.08 // around 2km
 		const carsLowBatteryInArea: any[] = carsLowBattery.filter(
 			(c) =>
 				Math.sqrt(
@@ -142,7 +142,7 @@ export async function listOfferHotswapRequest(req: Request, res: Response) {
 		}
 
 		// Return all offers
-		return res.status(200).json({ offers: [...offers, ...incentiveOffers] })
+		return res.status(200).json({ offers: [...incentiveOffers, ...offers] })
 	} catch (err) {
 		return res.status(500).json({
 			error: "Internal server error",
