@@ -49,41 +49,89 @@ var fourthRndStation;
 var fifthRndStation;
 
 const generateUserBehaviour = async () => {
-  	await initializeStations();
+  await initializeStations();
 
-	for (let i = 0; i < 11; i++) {
-		setTimeout(() => {
-			firstScenario(firstStation, airportStation, 1768742103, 176874304, "Sedan");
-		  }, 4000);
-	
-		  setTimeout(() => {
-			secondScenario(fithStation, firstChargeStation, 1768741103, 176874303, "Truck");
-		  }, 4000);
-	
-		  setTimeout(() => {
-			thirdScenario(thirdStation, fourthStation, 1768742203, 1768744403, "Transporter");
-		}, 4000);
-	
-		setTimeout(() => {
-			fourthScenario(firstRndStation, fifthRndStation, 1668742203, 1668752203, "Sedan")
-		}, 4000);
-	
-		setTimeout(() => {
-			fifthScenario(secondRndStation, fourthRndStation, 1768742203, 1768742503, "Truck")
-		}, 4000);
-	
-		setTimeout(() => {
-			sixthScenario(thirdRndStation, 3000, 1868742203, 1868842203, "Transporter")
-		}, 4000);
-	
-		setTimeout(() => {
-			seventhScenario(fourthChargeStation, fourthRndStation, 1668742203, 1668742503, "Sedan")
-		}, 4000);
-	
-		setTimeout(() => {
-			eighthScenario(firstChargeStation, fifthRndStation, 1768742503, 1768742519, "Sedan")
-		}, 4000);
-	}
+  for (let i = 0; i < 11; i++) {
+    setTimeout(() => {
+      firstScenario(
+        firstStation,
+        airportStation,
+        1768742103,
+        176874304,
+        'Sedan'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      secondScenario(
+        fithStation,
+        firstChargeStation,
+        1768741103,
+        176874303,
+        'Truck'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      thirdScenario(
+        thirdStation,
+        fourthStation,
+        1768742203,
+        1768744403,
+        'Transporter'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      fourthScenario(
+        firstRndStation,
+        fifthRndStation,
+        1668742203,
+        1668752203,
+        'Sedan'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      fifthScenario(
+        secondRndStation,
+        fourthRndStation,
+        1768742203,
+        1768742503,
+        'Truck'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      sixthScenario(
+        thirdRndStation,
+        3000,
+        1868742203,
+        1868842203,
+        'Transporter'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      seventhScenario(
+        fourthChargeStation,
+        fourthRndStation,
+        1668742203,
+        1668742503,
+        'Sedan'
+      );
+    }, 4000);
+
+    setTimeout(() => {
+      eighthScenario(
+        firstChargeStation,
+        fifthRndStation,
+        1768742503,
+        1768742519,
+        'Sedan'
+      );
+    }, 4000);
+  }
 };
 
 const initializeStations = async () => {
@@ -93,12 +141,7 @@ const initializeStations = async () => {
     33.807127,
     -118.145908
   );
-  airportStation = await createNewStation(
-    'Other',
-    3,
-    33.943021,
-    -118.401891
-  ); // Airport
+  airportStation = await createNewStation('Other', 3, 33.943021, -118.401891); // Airport
 
   secondStation = await createNewStation(
     'SixtStation',
@@ -148,46 +191,63 @@ const initializeStations = async () => {
     -117.524047
   );
 
-  fithStation = await createNewStation(
-    'SixtStation',
-    4,
-    33.930010,
-    -118.394665
-  );
+  fithStation = await createNewStation('SixtStation', 4, 33.93001, -118.394665);
 
   firstRndStation = await createNewStation(
-	'ChargingStation',
-	12,
-	33.903374,
-	-118.160242,
+    'ChargingStation',
+    12,
+    33.903374,
+    -118.160242
   );
 
   secondRndStation = await createNewStation(
-	'ChargingStation',
-	12,
-	33.824573,
-	-118.342704
+    'ChargingStation',
+    12,
+    33.824573,
+    -118.342704
   );
 
   thirdRndStation = await createNewStation(
-	'ChargingStation',
-	12,
-	33.837566, 
-	-118.382792
+    'ChargingStation',
+    12,
+    33.837566,
+    -118.382792
   );
 
   fourthRndStation = await createNewStation(
-	'ChargingStation',
-	12,
-	34.031610, 
-	-118.473518
+    'ChargingStation',
+    12,
+    34.03161,
+    -118.473518
   );
 
   fifthRndStation = await createNewStation(
-	'ChargingStation',
-	12,
-	34.064508, 
-	-118.394828
+    'ChargingStation',
+    12,
+    34.064508,
+    -118.394828
+  );
+
+  let otherStation = await createNewStation('Other', 2, 34.015199, -118.275793);
+  await createNewCar(
+    'BMW 330i',
+    'Sedan',
+    400,
+    40,
+    'Charging',
+    1768742203,
+    otherStation
+  );
+
+  otherStation = await createNewStation('Other', 2, 34.015199, -118.275793);
+  await createNewCar(
+    'BMW 330i',
+    'Sedan',
+    400,
+    40,
+    'Charging',
+    1768742203,
+    otherStation
   );
 
   await createNewCar(
@@ -251,67 +311,67 @@ const initializeStations = async () => {
   );
 
   await createNewCar(
-	'Tesla Model 3',
-	'Sedan',
-	 4000,
-	 2700,
-	 'Parked',
-	 1768742011,
-	 firstRndStation
+    'Tesla Model 3',
+    'Sedan',
+    4000,
+    2700,
+    'Parked',
+    1768742011,
+    firstRndStation
   );
 
   await createNewCar(
-	'Cyber Truck',
-	'Truck',
-	 7000,
-	 2300,
-	 'Parked',
-	 1768742011,
-	 firstRndStation
+    'Cyber Truck',
+    'Truck',
+    7000,
+    2300,
+    'Parked',
+    1768742011,
+    firstRndStation
   );
 
   await createNewCar(
-	'Bmw i8',
-	'Sedan',
-	 3500,
-	 2700,
-	 'Parked',
-	 1768742011,
-	 secondRndStation
+    'Bmw i8',
+    'Sedan',
+    3500,
+    2700,
+    'Parked',
+    1768742011,
+    secondRndStation
   );
 
   await createNewCar(
-	'Mercedes c-class',
-	'Sedan',
-	 3500,
-	 1200,
-	 'Parked',
-	 1768742011,
-	 thirdRndStation
+    'Mercedes c-class',
+    'Sedan',
+    3500,
+    1200,
+    'Parked',
+    1768742011,
+    thirdRndStation
   );
 
   await createNewCar(
-	'Bmw m4',
-	'Sedan',
-	 2700,
-	 2700,
-	 'Parked',
-	 1768742011,
-	 fourthRndStation
+    'Bmw m4',
+    'Sedan',
+    2700,
+    2700,
+    'Parked',
+    1768742011,
+    fourthRndStation
   );
 
   await createNewCar(
-	'Bmw m5',
-	'Sedan',
-	 3100,
-	 2700,
-	 'Parked',
-	 1768742011,
-	 fifthRndStation
+    'Bmw m5',
+    'Sedan',
+    3100,
+    2700,
+    'Parked',
+    1768742011,
+    fifthRndStation
   );
 };
 
-const firstScenario = (
+const firstScenario = async (
   startStation: string,
   endStation: string,
   startDate: number,
@@ -348,83 +408,65 @@ const thirdScenario = (
 };
 
 const fourthScenario = (
-	startStation: string,
-  	endStation: string,
-  	startDate: number,
-  	endDate: number,
-  	carType: string
+  startStation: string,
+  endStation: string,
+  startDate: number,
+  endDate: number,
+  carType: string
 ) => {
-	createBookingWithHotSwap(
-		startStation,
-		endStation,
-		startDate,
-		endDate,
-		carType
-	)
+  createBookingWithHotSwap(
+    startStation,
+    endStation,
+    startDate,
+    endDate,
+    carType
+  );
 };
 
 const fifthScenario = (
-	startStation: string,
-  	endStation: string,
-  	startDate: number,
-  	endDate: number,
-  	carType: string
+  startStation: string,
+  endStation: string,
+  startDate: number,
+  endDate: number,
+  carType: string
 ) => {
-	createBookingWithHotSwap(
-		startStation,
-		endStation,
-		startDate,
-		endDate,
-		carType
-	)
+  createBookingWithHotSwap(
+    startStation,
+    endStation,
+    startDate,
+    endDate,
+    carType
+  );
 };
 
 const sixthScenario = (
-	startStation: string,
-  	distance: number,
-  	startDate: number,
-  	endDate: number,
-  	carType: string
+  startStation: string,
+  distance: number,
+  startDate: number,
+  endDate: number,
+  carType: string
 ) => {
-	createBookingForDuration(
-		startStation,
-		distance,
-		startDate,
-		endDate,
-		carType
-	)
+  createBookingForDuration(startStation, distance, startDate, endDate, carType);
 };
 
 const seventhScenario = (
-	startStation: string,
-  	endStation: string,
-  	startDate: number,
-  	endDate: number,
-  	carType: string
+  startStation: string,
+  endStation: string,
+  startDate: number,
+  endDate: number,
+  carType: string
 ) => {
-	createBookingForRoute(
-		startStation,
-		endStation,
-		startDate,
-		endDate,
-		carType
-	)
+  createBookingForRoute(startStation, endStation, startDate, endDate, carType);
 };
 
 const eighthScenario = (
-	startStation: string,
-  	endStation: string,
-  	startDate: number,
-  	endDate: number,
-  	carType: string
+  startStation: string,
+  endStation: string,
+  startDate: number,
+  endDate: number,
+  carType: string
 ) => {
-	createBookingForRoute(
-		startStation,
-		endStation,
-		startDate,
-		endDate,
-		carType
-	)
+  createBookingForRoute(startStation, endStation, startDate, endDate, carType);
 };
 
 const getNewStationById = (stationId: string) => {
