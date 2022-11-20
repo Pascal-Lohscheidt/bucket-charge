@@ -51,7 +51,7 @@ type Booking {
   distance: Float!
   incentiveUsed: Boolean!
   startPosition: Position! @embedded
-  waypoints: [Station!]! @relation
+  waypoints: [Station!] @relation
 }
 
 type Query {

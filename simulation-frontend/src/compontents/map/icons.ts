@@ -4,7 +4,7 @@ export const warehouseIcon = (anchor: any) => ({
   fillOpacity: 0.8,
   strokeWeight: 0,
   rotation: 0,
-  scale: 1,
+  scale: 0.7,
   anchor,
 });
 
@@ -14,7 +14,7 @@ export const chargingStationIcon = (anchor: any) => ({
   fillOpacity: 0.8,
   strokeWeight: 0,
   rotation: 0,
-  scale: 0.6,
+  scale: 0.8,
   anchor,
 });
 
@@ -24,6 +24,6 @@ export const carIcon = (anchor: any) => ({
   fillOpacity: 0.8,
   strokeWeight: 0,
   rotation: 0,
-  scale: 0.4,
+  scale: 0.6,
   anchor,
 });

@@ -22,64 +22,7 @@ const BookingCard = ({ booking, click, selected }: any) => {
 };
 
 const BookingPanel = ({ selectBooking, selectedBooking }: any) => {
-  const [bookings, setBookings] = useState<any[]>([
-    {
-      _id: '348797388440207564',
-      endDate: 1668818607,
-      car: { name: 'Mercedes' },
-      startPosition: {
-        lat: 33.799718,
-        long: -117.889326,
-      },
-      incentiveUsed: true,
-      startDate: 1668732207,
-      distance: 50.5,
-      waypoints: {
-        data: [
-          {
-            positionLat: 33.807127,
-            positionLong: -118.145908,
-            chargingSlots: 1,
-            stationType: 'SixtStation',
-          },
-          {
-            positionLat: 33.943021,
-            positionLong: -118.401891,
-            chargingSlots: 3,
-            stationType: 'Other',
-          },
-        ],
-      },
-    },
-    {
-      _id: '348797388440207563',
-      endDate: 1668818607,
-      car: { name: 'Mercedes' },
-      startPosition: {
-        lat: 33.799718,
-        long: -117.889326,
-      },
-      incentiveUsed: true,
-      startDate: 1668732207,
-      distance: 50.5,
-      waypoints: {
-        data: [
-          {
-            positionLat: 33.978546,
-            positionLong: -117.461845,
-            chargingSlots: 7,
-            stationType: 'SixtStation',
-          },
-          {
-            positionLat: 33.943021,
-            positionLong: -118.401891,
-            chargingSlots: 3,
-            stationType: 'Other',
-          },
-        ],
-      },
-    },
-  ]);
+  const [bookings, setBookings] = useState<any[]>([]);
   const [dataFeteched, setDataFetched] = useState<boolean>(false);
 
   useEffect(() => {
@@ -88,7 +31,7 @@ const BookingPanel = ({ selectBooking, selectedBooking }: any) => {
       axios
         .get('http://localhost:8080/api/booking')
         .then((res) => {
-          setBookings(res.data.allBookings);
+          setBookings(res.data.allBookings.data);
         })
         .catch((error) => console.log(error));
     }
