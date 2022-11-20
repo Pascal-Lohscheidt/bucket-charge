@@ -11,6 +11,7 @@ import { carRoute } from "./routes/carRoute"
 import { stationRoute } from "./routes/stationRoute"
 import { offerForDurationRoute } from "./routes/offerForDurationRoute"
 import { offerForRouteRoute } from "./routes/offerForRouteRoute"
+import { offerHotswapRoute } from "./routes/offerHotswapRoute"
 
 // initialize configuration
 dotenv.config()
@@ -35,6 +36,7 @@ app.use('/api/car', carRoute)
 app.use('/api/station', stationRoute)
 app.use('/api/offer/duration', offerForDurationRoute)
 app.use('/api/offer/route', offerForRouteRoute)
+app.use('/api/offer/hotswap', offerHotswapRoute)
 
 const httpServer = createServer(app)
 
