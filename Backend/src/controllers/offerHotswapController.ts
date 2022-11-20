@@ -138,7 +138,7 @@ export async function listOfferHotswapRequest(req: Request, res: Response) {
 		}
 
 		if (offers.length === 0 && incentiveOffers.length === 0) {
-			return res.status(200).json({})
+			return res.status(200).json({ offers: [] })
 		}
 
 		// Return all offers
