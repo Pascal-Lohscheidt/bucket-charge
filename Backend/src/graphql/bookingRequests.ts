@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from 'graphql-request'
 
 export const createBooking = gql`
   mutation ($data: BookingInput!) {
@@ -29,7 +29,7 @@ export const createBooking = gql`
       }
     }
   }
-`;
+`
 
 export const updateBooking = gql`
   mutation ($id: ID!, $data: BookingInput!) {
@@ -68,7 +68,7 @@ export const updateBooking = gql`
         }
     }
 }
-`;
+`
 
 export const deleteBooking = gql`
   mutation ($id: ID!) {
@@ -107,7 +107,7 @@ export const deleteBooking = gql`
       }
     }
   }
-`;
+`
 
 export const findBookings = gql`
   query {
@@ -148,7 +148,7 @@ export const findBookings = gql`
       }
     }
   }
-`;
+`
 
 export const findBookingById = gql`
   query ($id: ID!) {
@@ -185,4 +185,4 @@ export const findBookingById = gql`
         }
     }
   }
-`;
+`
